@@ -14,7 +14,6 @@ describe('AppService', () => {
       send: jest.fn(),
     } as any;
 
-    // Simula Kafka.producer() retornando o mockProducer
     (Kafka as jest.Mock).mockImplementation(() => ({
       producer: () => mockProducer,
     }));
@@ -36,7 +35,7 @@ describe('AppService', () => {
   });
 
   it('sendMessage deve enviar a mensagem corretamente', async () => {
-    await service.onModuleInit(); // inicializa o producer
+    await service.onModuleInit(); 
 
     const topic = 'meu-topico-kafka';
     const message = { foo: 'bar' };

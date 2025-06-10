@@ -65,7 +65,7 @@ describe('ReviewController', () => {
         });
 
         it('deve retornar erro se a validação do Kafka falhar', async () => {
-            const body = { text: '', rating: -1 }; // inválido (simulado)
+            const body = { text: '', rating: -1 }; 
             const kafkaErrorResponse = { success: false, message: 'Avaliação inválida' };
 
             (clientKafkaMock.send as jest.Mock).mockReturnValue(of(kafkaErrorResponse));

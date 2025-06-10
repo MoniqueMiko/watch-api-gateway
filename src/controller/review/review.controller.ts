@@ -28,7 +28,7 @@ export class ReviewController implements OnModuleInit {
         return await this._httException.responseHelper(response, res);
     }
 
-    //Esta rota em especifico é usada com e sem login
+    //Esta rota em especifico é usada com e sem  JWT
     @Post('index')
     async index(@Res() res) {
         const response = await lastValueFrom(this.client.send('review_index', {}));

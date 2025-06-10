@@ -8,13 +8,13 @@ describe('JwtStrategy', () => {
   const OLD_ENV = process.env;
 
   beforeEach(() => {
-    jest.resetModules(); // limpa o cache
+    jest.resetModules(); 
     process.env = { ...OLD_ENV, JWT_SECRET: 'test-secret' };
     strategy = new JwtStrategy();
   });
 
   afterAll(() => {
-    process.env = OLD_ENV; // restaura env original
+    process.env = OLD_ENV; 
   });
 
   it('deve ser definido', () => {

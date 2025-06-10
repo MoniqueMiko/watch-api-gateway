@@ -19,7 +19,7 @@ describe('HttpException', () => {
     { status: HttpStatus.OK, expectedStatus: 200 },
     { status: HttpStatus.CREATED, expectedStatus: 201 },
     { status: HttpStatus.NOT_FOUND, expectedStatus: 404 },
-    { status: 999, expectedStatus: 500 }, // status inesperado
+    { status: 999, expectedStatus: 500 }, 
   ];
 
   testCases.forEach(({ status, expectedStatus }) => {
