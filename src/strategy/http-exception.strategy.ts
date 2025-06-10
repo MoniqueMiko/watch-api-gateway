@@ -2,24 +2,21 @@ import { HttpStatus } from '@nestjs/common';
 
 export class HttpException {
   async responseHelper(response, res) {
-    if ((await response.status) == HttpStatus.BAD_REQUEST) {
-      return res.status(HttpStatus.BAD_REQUEST).json(response.message);
+    const status = await response.status;
+    const message = response.message;
+
+    const validStatus = [
+      HttpStatus.BAD_REQUEST,
+      HttpStatus.UNAUTHORIZED,
+      HttpStatus.OK,
+      HttpStatus.CREATED,
+      HttpStatus.NOT_FOUND,
+    ];
+
+    if (validStatus.includes(status)) {
+      return res.status(status).json(message);
     }
 
-    if ((await response.status) == HttpStatus.UNAUTHORIZED) {
-      return res.status(HttpStatus.UNAUTHORIZED).json(response.message);
-    }
-
-    if ((await response.status) == HttpStatus.OK) {
-      return res.status(HttpStatus.OK).json(response.message);
-    }
-
-    if ((await response.status) == HttpStatus.CREATED) {
-      return res.status(HttpStatus.CREATED).json(response.message);
-    }
-
-    return await res
-      .status(HttpStatus.INTERNAL_SERVER_ERROR)
-      .json(response.message);
+    return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(message);
   }
 }

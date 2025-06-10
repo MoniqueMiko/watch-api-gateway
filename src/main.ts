@@ -12,7 +12,7 @@ async function bootstrap() {
         brokers: ['localhost:9092'],
       },
       consumer: {
-        groupId: 'gateway-consumer',
+        groupId: 'desafio-watch-consumer',
       },
     },
   });
